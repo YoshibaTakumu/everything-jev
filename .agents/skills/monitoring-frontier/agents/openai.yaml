@@ -1,0 +1,3 @@
+interface:
+  display_name: "Monitoring Frontier"
+  short_description: "複数の Issue グラフを観測し、進捗・判断待ち・未確認の変化を利用者へ報告する"

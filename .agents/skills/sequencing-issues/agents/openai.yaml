@@ -1,0 +1,3 @@
+interface:
+  display_name: "Issue の着手順"
+  short_description: "Issue 群を依存順に並べ、今着手できる Issue を求め、図にする"

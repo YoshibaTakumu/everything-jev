@@ -1,0 +1,3 @@
+interface:
+  display_name: "Draining Frontier"
+  short_description: "Issue の依存順に実装・検証・PR 作成を進め、許可された範囲で統合する"
