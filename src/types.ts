@@ -1,5 +1,10 @@
 export type Json =
-  null | boolean | number | string | Json[] | { [key: string]: Json };
+  | null
+  | boolean
+  | number
+  | string
+  | Json[]
+  | { [key: string]: Json };
 export type Content = string | Json[] | { [key: string]: Json };
 
 export type Question =

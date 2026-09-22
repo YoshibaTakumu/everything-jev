@@ -64,6 +64,7 @@ const invalidRequests = [
     "unsafe object key",
     (r) => (r.state = JSON.parse('{"__proto__":{"polluted":true}}')),
   ],
+  // oxlint-disable-next-line unicorn/no-new-array -- Deliberately create holes to test sparse-array rejection.
   ["sparse array", (r) => (r.state = new Array(3))],
   ["empty questions", (r) => (r.questions = {})],
   ["unknown question type", (r) => (r.questions.route.type = "text")],

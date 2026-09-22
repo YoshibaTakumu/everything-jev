@@ -1,6 +1,6 @@
 # Contributing
 
-Use Node.js 22+ and the pnpm version declared in `package.json`.
+Use Node.js 24.x (`.node-version`) and the pnpm version declared in `package.json`.
 
 ```sh
 pnpm install --frozen-lockfile
@@ -9,7 +9,11 @@ pnpm demo
 pnpm verify
 ```
 
-Run `pnpm format` after edits. Tests use Node's built-in test runner and simulated HTTP responses; do not add a real provider key to CI. Keep the runtime dependency surface small and commit lockfile changes with dependency updates.
+Run `pnpm format` after edits. Biome formats JavaScript, TypeScript, and JSON; Markdown and YAML are maintained manually. Generated output and local data are excluded. oxlint owns lint rules; Biome's linter and assist are disabled to keep their responsibilities separate.
+
+`pnpm lint` checks source, tests, and examples and fails on warnings. `pnpm lint:fix` applies available safe fixes. `pnpm verify` runs the formatter check, oxlint, the TypeScript 7 build, and tests.
+
+Tests use Node's built-in test runner and simulated HTTP responses; do not add a real provider key to CI. Keep the runtime dependency surface small and commit lockfile changes with dependency updates.
 
 ## Recipes
 

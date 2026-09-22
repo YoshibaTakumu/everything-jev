@@ -25,11 +25,16 @@ export function binaryMetrics(rows: readonly LabelledDecision[]) {
       throw new Error(
         "Evaluation labels must be boolean; null prediction means review",
       );
-    if (row.predicted === null)
-      row.expected ? counts.reviewPositive++ : counts.reviewNegative++;
-    else if (row.predicted)
-      row.expected ? counts.truePositive++ : counts.falsePositive++;
-    else row.expected ? counts.falseNegative++ : counts.trueNegative++;
+    if (row.predicted === null) {
+      if (row.expected) counts.reviewPositive++;
+      else counts.reviewNegative++;
+    } else if (row.predicted) {
+      if (row.expected) counts.truePositive++;
+      else counts.falsePositive++;
+    } else {
+      if (row.expected) counts.falseNegative++;
+      else counts.trueNegative++;
+    }
   }
   const ratio = (numerator: number, denominator: number) =>
     denominator === 0 ? null : numerator / denominator;

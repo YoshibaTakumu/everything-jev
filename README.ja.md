@@ -8,7 +8,7 @@ TypeSafe の Jev を使う共通クライアント、回答の検証、判定ポ
 
 ## まず動かす
 
-Node.js 22 以上、pnpm 11.4.0 を用意してください。CI は Node 22 / 24 で実行します。
+Node.js 24.x、pnpm 12.5.1 を用意してください。CI は `.node-version` に指定した Node 24 で実行します。
 
 ```sh
 git clone https://github.com/YoshibaTakumu/everything-jev.git
@@ -19,6 +19,8 @@ pnpm jev list
 pnpm jev demo all
 pnpm verify
 ```
+
+開発には TypeScript 7、整形には Biome、lint には oxlint を使います。`pnpm verify` で整形・lint・コンパイル・テストを確認します。整形の対象範囲は [CONTRIBUTING](CONTRIBUTING.md) を参照してください。
 
 デモは API キー不要です。**回答は手書きの固定データで、Jev の推論結果や精度測定ではありません。** 入力、判定、保留、権限の扱いを確認するためのものです。デモの権限確認も架空の値です。
 

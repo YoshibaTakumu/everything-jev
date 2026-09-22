@@ -13,7 +13,7 @@ The name describes the breadth of the cookbook. **This release ships decision re
 
 ## Run it
 
-Requires Node.js 22+ and pnpm 11.4.0. CI covers Node 22 and 24. Install the declared pnpm version using your preferred package-manager setup.
+Requires Node.js 24.x and pnpm 12.5.1. CI uses Node 24 from `.node-version`. Install the declared pnpm version using your preferred package-manager setup.
 
 ```sh
 git clone https://github.com/YoshibaTakumu/everything-jev.git
@@ -25,6 +25,8 @@ pnpm jev demo contact-filter
 pnpm jev demo all
 pnpm verify
 ```
+
+Development uses TypeScript 7, Biome for formatting, and oxlint for linting. `pnpm verify` checks formatting, lint, compilation, and tests. See [contributing](CONTRIBUTING.md) for formatter coverage.
 
 The contact-filter demo prints a recommendation like this, alongside its fixture response:
 
