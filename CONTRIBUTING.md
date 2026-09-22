@@ -1,5 +1,7 @@
 # Contributing
 
+Use [development policy](docs/dev-policy/README.md) for task scope, branch/worktree handling, PR review/merge and document maintenance. This guide owns the executable setup, verification and release workflow.
+
 Use Node.js 24.x (`.node-version`) and the pnpm version declared in `package.json`.
 
 Install that exact pnpm version with your version manager and check `pnpm --version` before working. `pmOnFail: ignore` keeps the lockfile compatible with GitHub's dependency graph, so pnpm does not switch versions or enforce the pin itself. CI installs the declared version with `pnpm/action-setup` and explicitly checks it. See [the lockfile compatibility note](docs/quality.md#pnpm-lockfile-compatibility) before changing this setting.
@@ -47,6 +49,10 @@ The repository must enable **Settings → Actions → General → Allow GitHub A
 For recovery, rerun the failed Release Please job or dispatch `release-please.yml` on `main` after checking that main CI passed. If release PR CI needs rerunning, use `gh workflow run ci.yml --ref <release-branch>`. Check Actions logs and the PR's current commit before merging; the workflow does not auto-merge release PRs.
 
 ## Evidence and reviews
+
+Use the [documentation index](docs/README.md) to find the owner of a contract and the [tech stack](docs/tech-stack/README.md) for adopted technology. Dependency, tooling and integration changes include the corresponding topic update and index review; follow the [documentation maintenance procedure](docs/tech-stack/documentation.md#updating-the-documents), including manual link and publication checks.
+
+Concepts and behavioral invariants live in [domain documents](docs/domain/README.md). Update the owning document with behavioral changes. For a new domain, start from its template, link implementation and relevant tests, and add an index row describing the question it owns. Keep implementation proposals distinct from observed behavior.
 
 See [quality and security tooling](docs/quality.md) for the checks, repository settings, free OSS options, and current Code Quality availability.
 
