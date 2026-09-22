@@ -7,7 +7,7 @@ Index of the technologies adopted by everything-jev. Read the relevant topic bef
 | [Runtime and build](runtime.md) | Node.js, TypeScript, pnpm, ESM and the dependency surface |
 | [Quality and delivery](quality-delivery.md) | Biome, oxlint, Vitest, Git hooks, GitHub Actions and releases |
 | [External integrations](integrations.md) | TypeSafe transport, simulated verification and proposed platform adapters |
-| [Documentation](documentation.md) | Document ownership, agent entry points and the update procedure |
+| [Documentation](documentation.md) | Markdown tooling and links to the shared document lifecycle |
 
 Exact versions belong to [package.json](../../package.json), [pnpm-lock.yaml](../../pnpm-lock.yaml), [.node-version](../../.node-version) and pinned workflow actions. Look them up there instead of copying them into this inventory. Protocol/model defaults belong to the implementation and [API contract](../api.md).
 

@@ -1,5 +1,7 @@
 # Contributing
 
+Use [development policy](docs/dev-policy/README.md) for task scope, branch/worktree handling, PR review/merge and document maintenance. This guide owns the executable setup, verification and release workflow.
+
 Use Node.js 24.x (`.node-version`) and the pnpm version declared in `package.json`.
 
 Install that exact pnpm version with your version manager and check `pnpm --version` before working. `pmOnFail: ignore` keeps the lockfile compatible with GitHub's dependency graph, so pnpm does not switch versions or enforce the pin itself. CI installs the declared version with `pnpm/action-setup` and explicitly checks it. See [the lockfile compatibility note](docs/quality.md#pnpm-lockfile-compatibility) before changing this setting.

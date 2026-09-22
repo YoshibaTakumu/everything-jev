@@ -18,10 +18,12 @@ paths:
   - "CONTRIBUTING.md"
   - "docs/quality.md"
   - "docs/tech-stack/**"
+  - "docs/dev-policy/**"
 ---
 
 # Development tooling and CI
 
+- Before changing branch, PR or development workflow policy, read [development policy](../../docs/dev-policy/README.md). Keep its instructions aligned with the actual hooks and workflows; [PR policy](../../docs/dev-policy/github-pr.md) owns merge verification.
 - For dependency, runtime or tooling changes, read [the tech stack](../../docs/tech-stack/README.md) and follow [documentation maintenance](../../docs/tech-stack/documentation.md#updating-the-documents) in the same change.
 - Before changing dependencies or pnpm configuration, read the lockfile compatibility section of [quality tooling](../../docs/quality.md). Verify GitHub's dependency graph after dependency updates; a passing Dependency Review alone does not establish that the lockfile was fully indexed.
 - Before changing hooks or commit checks, read the Git hooks section of [CONTRIBUTING.md](../../CONTRIBUTING.md). Keep local checks aligned with CI and invoke repository tools through pnpm.
