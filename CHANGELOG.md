@@ -1,12 +1,5 @@
 # Changelog
 
-## Unreleased
-
-- Target Node.js 24.x for development, runtime support, and CI.
-- Update to TypeScript 7 and Node 24 types, explicitly loading Node types.
-- Replace Prettier with Biome formatting and add oxlint to verification.
-- Update pnpm and pin current GitHub Actions releases.
-
 ## 0.1.0 — 2026-09-22
 
 Initial public release:
