@@ -1,5 +1,7 @@
 # Cookbook: 22 decision recipes
 
+The shared [recipe contract](domain/recipe.md) owns recipe vocabulary and generation behavior; this cookbook owns use-case guidance and integration requirements.
+
 Run `pnpm jev inspect <id>` to inspect a request and `pnpm jev demo <id>` to exercise its fixture. All entries are implemented in [src/recipes.ts](../src/recipes.ts). Each defines a bounded Choice question, a concern Noul, required deterministic gates, fictional state and a hand-authored response. SEO also demonstrates a Score rubric.
 
 **Maturity for every entry:** executable decision example; external platform adapter not shipped; live quality not measured. The same generic policy is intentionally visible across recipes. This does not imply that identical thresholds are appropriate for different domains.

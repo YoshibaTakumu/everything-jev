@@ -7,7 +7,8 @@
 | [English README](../../README.md), [Japanese README](../../README.ja.md) | Public scope, setup and entry links; keep both consistent |
 | [Documentation index](../README.md) | Routes tasks to the maintained reference |
 | [Tech stack index](README.md) and its topic files | Adopted technologies, role, implementation evidence and adoption status |
-| [API](../api.md), [architecture](../architecture.md), [security](../security.md), [harness](../harness.md) | Behavioral and integration contracts |
+| [Domain documents](../domain/README.md) | Concept vocabulary, relationships and local behavioral invariants; use the domain template and maintain its index |
+| [API](../api.md), [architecture](../architecture.md), [security](../security.md), [harness](../harness.md) | Transport/CLI contracts, cross-domain flow, security boundaries and harness integration |
 | [Cookbook](../cookbook.md), [evaluation](../evaluation.md) | Recipe guidance and evidence requirements |
 | [Contributing](../../CONTRIBUTING.md), [quality tooling](../quality.md) | Development/release workflow and tooling observations |
 | [Source ledger](../sources.md) | External research, official references and qualification of claims |
@@ -27,4 +28,4 @@ Keep technical contracts in their existing owner documents. Topic files explain 
 5. Verify technical claims against the named source/configuration and run the checks required for the changed behavior in [Contributing](../../CONTRIBUTING.md). For external capability or availability claims, consult current primary sources and record the date and limits of any observation. A dependency or sample is not evidence of a working integration.
 6. Before commit/push, review the complete diff and all new files for credentials, private project content, customer data and local machine paths. Use fictional examples and public references. Record the actual verification performed in the commit/PR or task report.
 
-For a new topic, use a short title, an **In use** section with role and source links, an **Installed but unused** section (explicitly say none when applicable), and **Proposed / not implemented** only when there is a concrete proposal. Include relevant maintenance/contract links. Split by distinct subject when needed rather than creating empty categories.
+For a new tech stack topic, use a short title, an **In use** section with role and source links, an **Installed but unused** section (explicitly say none when applicable), and **Proposed / not implemented** only when there is a concrete proposal. Include relevant maintenance/contract links. Split by distinct subject when needed rather than creating empty categories. For domain concepts, use the separate [domain maintenance procedure](../domain/README.md#create-and-maintain-a-domain-document).

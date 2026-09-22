@@ -5,9 +5,10 @@ Start here to find the maintained reference for a task. These are developer and 
 | Task | Read |
 | --- | --- |
 | Understand or change adopted technology | [Tech stack](tech-stack/README.md) |
+| Define concepts, relationships or behavioral invariants | [Domain documentation](domain/README.md) |
 | Change the client, request validation or CLI | [Client and CLI](api.md) |
-| Change decision policy, memory eligibility or sequencing | [Architecture](architecture.md) and [security boundaries](security.md) |
-| Add or use a recipe | [Cookbook](cookbook.md) |
+| Change decision policy, memory eligibility or sequencing | [Domain contracts](domain/README.md), [architecture](architecture.md) and [security boundaries](security.md) |
+| Add or use a recipe | [Recipe contract](domain/recipe.md) and [cookbook](cookbook.md) |
 | Connect a harness or external executor | [Harness integration](harness.md) |
 | Measure outcomes or change evaluation | [Evaluation](evaluation.md) |
 | Change CI, security tooling or releases | [Quality tooling](quality.md) and [contributing](../CONTRIBUTING.md) |

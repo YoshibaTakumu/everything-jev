@@ -2,6 +2,8 @@
 
 The core boundary is between **semantic judgment** and **application authority**. A fluent or confident judgment cannot supply permission, current state, proof of a test run, or a missing accounting rule.
 
+This document owns the cross-domain flow and application responsibilities. The [domain index](domain/README.md) routes local vocabulary and invariants to their owner.
+
 ## Decision contract
 
 1. Observe a bounded, versioned snapshot through an application adapter.
@@ -23,25 +25,17 @@ Instructions in a webpage, email, source comment, contract, or stored memory are
 
 `decide()` accepts gate values from its caller. **It cannot authenticate the caller or verify the facts behind a `pass`.** Your server must compute those values using authenticated systems. Browser clients and user-supplied JSON must not be trusted sources for gate values.
 
-All outcomes have `executed: false`. `suggested` means that this example policy accepts a recommendation for downstream consideration. It is not an authorization token or a terminal success state.
-
-| Outcome     | Meaning                                                                              |
-| ----------- | ------------------------------------------------------------------------------------ |
-| `blocked`   | A required deterministic gate explicitly failed                                      |
-| `review`    | A gate is missing/unknown, the answer is malformed, or semantic thresholds are unmet |
-| `suggested` | Required supplied gates passed and the illustrative semantic policy passed           |
-
-The policy checks gates first. Missing gates can therefore mask a malformed response in the policy's reasons; the HTTP client separately validates every returned response before returning it.
+The [decision contract](domain/decision.md#rules-and-outcomes) owns outcome meanings, gate precedence, response validation and recommendation behavior. Consumers must treat its result as a decision for downstream consideration, not an authorization token or execution receipt.
 
 ## Model uncertainty
 
-Default examples require Choice confidence ≥ 0.8, maximum probability ≥ 0.75, a top-two probability gap ≥ 0.2, and concern Noul ≤ 0.2. These thresholds are deliberately visible in code. They are **not calibrated safety guarantees**.
+Threshold defaults live in [src/policy.ts](../src/policy.ts); their role is documented in the [decision contract](domain/decision.md). They are **not calibrated safety guarantees**.
 
 Confidence and probability are separate fields. A Score is a rubric-level value, not a probability. The optional SEO quality score is returned for inspection; it is not secretly folded into the route policy. See [evaluation](evaluation.md) before changing thresholds or claiming accuracy.
 
 ## State, memory and evidence
 
-Memory belongs in a store that supports scoped access, provenance, updates, expiry and deletion. This package's `eligibleMemories()` filters exact tenant/principal/project scope before semantic retrieval. It does not persist records, detect secrets, resolve contradictions, or enforce database row-level permissions.
+Memory belongs in a store that supports scoped access, provenance, updates, expiry and deletion. The [memory eligibility contract](domain/memory.md) owns the local filter's exact scope/time rules and boundaries. Persistent storage and authorization remain application responsibilities.
 
 Use different lifetimes for task context, session facts, explicit personal preferences and verified long-term facts. Store a preference only with an appropriate consent basis and an identifiable source. Relevance is not permission to retrieve it. Never use Jev to recover a record excluded by deterministic access controls.
 
