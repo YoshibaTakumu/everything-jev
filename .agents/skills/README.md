@@ -29,3 +29,11 @@ These three skills are adapted from user-provided sources with explicit permissi
 | [monitoring-frontier](monitoring-frontier/SKILL.md) | Report progress, blockers and observation gaps without starting implementation. |
 
 The adaptations remove private execution history, environment-specific details and references to unavailable skills or documents. The three skills refer to each other and to this repository's contribution instructions. Estimates use locally observed evidence; monitoring requires an actual scheduler setup only when recurring execution is requested.
+
+## Project guides
+
+| Skill | Purpose |
+| --- | --- |
+| [what-is-jev](what-is-jev/SKILL.md) | Explain Jev, assess suitable architectures and limitations, guide setup, and find official documentation. |
+
+`what-is-jev` is an independently maintained guide, not an official TypeSafe skill. Its references distinguish official specifications from local implementation choices and include a dated inventory of the official documentation.
