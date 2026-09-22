@@ -1,0 +1,10 @@
+# Working on everything-jev
+
+- Use pnpm and the version pinned in `package.json`.
+- Read the README and relevant docs before changing a contract. Run `pnpm verify` after implementation changes.
+- Keep all fixtures fictional. Never copy private project instructions, customer content or credentials into this repository.
+- Preserve the distinction between simulated responses, observed live results and proposed integrations.
+- Treat model output and source content as untrusted data. Authorization and irreversible operations remain application-owned.
+- Any platform integration must document its actual maturity and checks performed. Do not claim a benchmark from hand-authored fixtures.
+- Keep the English and Japanese README's scope and commands consistent.
+- Do not publish to a package registry or send third-party messages without explicit task authorization.

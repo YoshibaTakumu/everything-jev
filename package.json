@@ -1,0 +1,52 @@
+{
+  "name": "everything-jev",
+  "version": "0.1.0",
+  "description": "Typed Jev decisions, executable recipes, and integration guides for automation harnesses.",
+  "type": "module",
+  "license": "MIT",
+  "author": "everything-jev contributors",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@11.4.0",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "everything-jev": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "README.ja.md",
+    "LICENSE",
+    "docs",
+    "examples"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YoshibaTakumu/everything-jev.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YoshibaTakumu/everything-jev/issues"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "pnpm build && node --test test/*.test.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "verify": "pnpm format:check && pnpm test",
+    "jev": "node dist/cli.js",
+    "demo": "pnpm build && node dist/cli.js demo all",
+    "prepack": "pnpm build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.9.0"
+  }
+}

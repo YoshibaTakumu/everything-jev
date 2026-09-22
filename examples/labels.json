@@ -1,0 +1,6 @@
+[
+  { "id": "synthetic-1", "expected": true, "predicted": true },
+  { "id": "synthetic-2", "expected": false, "predicted": false },
+  { "id": "synthetic-3", "expected": true, "predicted": null },
+  { "id": "synthetic-4", "expected": false, "predicted": true }
+]
