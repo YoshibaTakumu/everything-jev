@@ -1,0 +1,19 @@
+lefthook: pnpm exec lefthook
+
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      run: pnpm format:check
+    lint:
+      run: pnpm lint
+
+commit-msg:
+  commands:
+    commitlint:
+      run: pnpm exec commitlint --edit "{1}"
+
+pre-push:
+  commands:
+    test:
+      run: pnpm test

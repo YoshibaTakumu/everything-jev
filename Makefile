@@ -1,6 +1,7 @@
 .PHONY: bootstrap build test verify demo
 bootstrap:
 	pnpm install --frozen-lockfile
+	pnpm hooks:install
 build:
 	pnpm build
 test:

@@ -14,13 +14,14 @@ Node.js 24.x、pnpm 12.5.1 を用意してください。CI は `.node-version` 
 git clone https://github.com/YoshibaTakumu/everything-jev.git
 cd everything-jev
 pnpm install --frozen-lockfile
+pnpm hooks:install
 pnpm build
 pnpm jev list
 pnpm jev demo all
 pnpm verify
 ```
 
-開発には TypeScript 7、整形には Biome、lint には oxlint を使います。`pnpm verify` で整形・lint・コンパイル・テストを確認します。整形の対象範囲は [CONTRIBUTING](CONTRIBUTING.md) を参照してください。
+開発には TypeScript 7、整形には Biome、lint には oxlint、テストには Vitest 5 を使います。Lefthook がローカルの Git フックを実行し、commitlint がローカルと CI で Conventional Commits を検査します。`pnpm verify` で整形・lint・コンパイル・テストを確認します。詳細は [CONTRIBUTING](CONTRIBUTING.md) を参照してください。
 
 デモは API キー不要です。**回答は手書きの固定データで、Jev の推論結果や精度測定ではありません。** 入力、判定、保留、権限の扱いを確認するためのものです。デモの権限確認も架空の値です。
 

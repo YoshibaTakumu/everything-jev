@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { test } from "node:test";
+import { test } from "vitest";
 import { recipes } from "../dist/index.js";
 
 const run = (...args) =>

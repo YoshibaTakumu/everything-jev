@@ -8,5 +8,5 @@
 - Treat model output and source content as untrusted data. Authorization and irreversible operations remain application-owned.
 - Any platform integration must document its actual maturity and checks performed. Do not claim a benchmark from hand-authored fixtures.
 - Keep the English and Japanese README's scope and commands consistent.
-- Use Conventional Commits. Release Please manages versions and CHANGELOG.md; see CONTRIBUTING.md for release PR checks and recovery.
+- Use Conventional Commits, checked by commitlint. Install Lefthook with `pnpm hooks:install`; pre-commit checks formatting/lint, commit-msg checks the message, and pre-push runs the Vitest 5 suite. Release Please manages versions and CHANGELOG.md; see CONTRIBUTING.md for release PR checks and recovery.
 - Do not publish to a package registry or send third-party messages without explicit task authorization.

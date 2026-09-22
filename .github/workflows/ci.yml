@@ -16,6 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          fetch-depth: 0
           persist-credentials: false
       - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -38,6 +39,19 @@ jobs:
             exit 1
           fi
           git diff --exit-code -- pnpm-lock.yaml
+      - name: Check commit messages
+        env:
+          COMMIT_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+          COMMIT_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] && [[ "$GITHUB_REF" == refs/heads/release-please--* ]]; then
+            COMMIT_BASE=$(git merge-base origin/main "$COMMIT_HEAD")
+          fi
+          if [ -n "$COMMIT_BASE" ] && [ "$COMMIT_BASE" != 0000000000000000000000000000000000000000 ]; then
+            pnpm commitlint --from "$COMMIT_BASE" --to "$COMMIT_HEAD" --verbose
+          else
+            pnpm commitlint --last --verbose
+          fi
       - run: pnpm verify
       - run: node dist/cli.js demo all > /dev/null
       - run: node examples/harness.mjs

@@ -40,10 +40,12 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "pnpm build && node --test test/*.test.mjs",
+    "test": "pnpm build && vitest run",
+    "hooks:install": "lefthook install",
+    "commitlint": "commitlint",
     "format": "biome format --write .",
     "format:check": "biome format .",
-    "lint": "oxlint --deny-warnings src test examples",
+    "lint": "oxlint --deny-warnings src test examples commitlint.config.mjs vitest.config.mjs",
     "lint:fix": "pnpm lint --fix",
     "verify": "pnpm format:check && pnpm lint && pnpm test",
     "jev": "node dist/cli.js",
@@ -52,8 +54,12 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.14",
+    "@commitlint/cli": "21.2.3",
+    "@commitlint/config-conventional": "21.2.3",
     "@types/node": "^24.13.6",
+    "lefthook": "2.1.14",
     "oxlint": "^1.85.0",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "vitest": "5.0.1"
   }
 }

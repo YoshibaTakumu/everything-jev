@@ -5,7 +5,8 @@ Policy and availability checked on 2026-09-22. This repository is public; rechec
 ## Repository checks
 
 - **Biome and oxlint:** formatting and static lint in `pnpm verify`.
-- **TypeScript 7 and Node 24 tests:** compilation and simulated protocol/policy checks in CI. These do not establish live Jev accuracy.
+- **TypeScript 7 and Vitest 5 on Node 24:** compilation and simulated protocol/policy checks in CI, including the built CLI. These do not establish live Jev accuracy.
+- **commitlint and Lefthook:** Conventional Commits validation locally and in CI, with local formatting/lint checks before commit and build/tests before push. Git hooks are convenience checks; CI enforces the checks independently.
 - **Dependency Review:** checks dependency changes on PRs and explicitly dispatched release PR CI. Moderate or higher known vulnerabilities fail the job. It does not enforce a license allowlist or post PR comments.
 - **CodeQL:** GitHub-managed default setup for JavaScript/TypeScript and GitHub Actions, using the extended query suite and standard hosted runners. Configuration lives in GitHub repository settings, not a checked-in CodeQL workflow. Inspect Security → Code scanning and the CodeQL Actions runs for actual findings and scan status.
 - **Dependabot:** weekly package/action updates plus repository-level alerts and security update PRs. Major `@types/node` version updates are ignored so types follow the supported Node 24 runtime; review this policy when changing Node versions.

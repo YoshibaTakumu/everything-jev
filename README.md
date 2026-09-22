@@ -19,6 +19,7 @@ Requires Node.js 24.x and pnpm 12.5.1. CI uses Node 24 from `.node-version`. Ins
 git clone https://github.com/YoshibaTakumu/everything-jev.git
 cd everything-jev
 pnpm install --frozen-lockfile
+pnpm hooks:install
 pnpm build
 pnpm jev list
 pnpm jev demo contact-filter
@@ -26,7 +27,7 @@ pnpm jev demo all
 pnpm verify
 ```
 
-Development uses TypeScript 7, Biome for formatting, and oxlint for linting. `pnpm verify` checks formatting, lint, compilation, and tests. See [contributing](CONTRIBUTING.md) for formatter coverage.
+Development uses TypeScript 7, Biome for formatting, oxlint for linting, and Vitest 5 for tests. Lefthook runs local Git checks, and commitlint enforces Conventional Commits locally and in CI. `pnpm verify` checks formatting, lint, compilation, and tests. See [contributing](CONTRIBUTING.md) for details.
 
 The contact-filter demo prints a recommendation like this, alongside its fixture response:
 

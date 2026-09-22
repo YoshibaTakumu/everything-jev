@@ -6,6 +6,7 @@ Install that exact pnpm version with your version manager and check `pnpm --vers
 
 ```sh
 pnpm install --frozen-lockfile
+pnpm hooks:install
 pnpm build
 pnpm demo
 pnpm verify
@@ -13,9 +14,17 @@ pnpm verify
 
 Run `pnpm format` after edits. Biome formats JavaScript, TypeScript, and JSON; Markdown and YAML are maintained manually. Generated output and local data are excluded. oxlint owns lint rules; Biome's linter and assist are disabled to keep their responsibilities separate.
 
-`pnpm lint` checks source, tests, and examples and fails on warnings. `pnpm lint:fix` applies available safe fixes. `pnpm verify` runs the formatter check, oxlint, the TypeScript 7 build, and tests.
+`pnpm lint` checks source, tests, examples, and JavaScript tool configuration and fails on warnings. `pnpm lint:fix` applies available safe fixes. `pnpm verify` runs the formatter check, oxlint, the TypeScript 7 build, and Vitest 5 tests.
 
-Tests use Node's built-in test runner and simulated HTTP responses; do not add a real provider key to CI. Keep the runtime dependency surface small and commit lockfile changes with dependency updates.
+Tests run in Vitest's Node environment, retain Node's strict assertions, and exercise the compiled `dist` entry points and CLI with simulated HTTP responses. `pnpm test` rebuilds before each run; do not add a real provider key to CI. Keep the runtime dependency surface small and commit lockfile changes with dependency updates.
+
+## Git hooks and commit messages
+
+Lefthook runs formatting and lint checks at `pre-commit`, commitlint at `commit-msg`, and the build plus Vitest suite at `pre-push`. The checks do not rewrite or stage files. `pnpm-workspace.yaml` allows Lefthook's install script; `pnpm hooks:install` also installs or repairs hooks when dependencies came from a cache. CI runs the checks directly without relying on Git hooks.
+
+Use Conventional Commits such as `fix(client): handle cancelled requests` or `feat(recipes): add a routing recipe`. commitlint uses `@commitlint/config-conventional`. To check a message file manually, run `pnpm commitlint --edit <message-file>`; to check a commit range, use `pnpm commitlint --from <base> --to <head>`.
+
+CI checks every commit in a PR or main push range. Dispatched release-branch CI checks commits since its merge base with `main`; other manual runs check the latest commit. Release Please's generated release commit follows the same convention.
 
 ## Recipes
 
