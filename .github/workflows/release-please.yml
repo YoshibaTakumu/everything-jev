@@ -45,7 +45,7 @@ jobs:
           target-branch: main
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
-      # GITHUB_TOKEN-created PRs do not trigger pull_request workflows.
+      # GITHUB_TOKEN-created PRs require approval for pull_request workflows.
       # workflow_dispatch is supported and runs CI on the release branch's SHA.
       - name: Run CI on the release PR
         if: steps.release.outputs.prs_created == 'true'

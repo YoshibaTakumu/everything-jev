@@ -13,6 +13,16 @@ Policy and availability checked on 2026-09-22. This repository is public; rechec
 
 Dependency graph, Dependabot alerts/security updates, code scanning, and secret scanning have free public-repository options: [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features). [Dependency Review](https://docs.github.com/en/code-security/concepts/supply-chain-security/dependency-review) is available for public repositories. [CodeQL default setup](https://docs.github.com/en/code-security/how-tos/find-and-fix-code-vulnerabilities/configure-code-scanning/configure-code-scanning) runs on changes and a recurring schedule.
 
+## pnpm lockfile compatibility
+
+pnpm 12 can write an environment YAML document before the project dependency graph. GitHub's SBOM for this repository then listed pnpm and its binaries but omitted all four direct development dependencies. A successful Dependency Review job alone did not prove those dependencies were scanned.
+
+We use `pmOnFail: ignore` in `pnpm-workspace.yaml` and regenerate the lockfile with pnpm to retain a single project document. This disables pnpm's own version switching/checking; `package.json` still pins the version, and CI installs and explicitly validates that version. Preserve all platform-specific optional dependencies when regenerating the lockfile. Config dependencies can introduce another environment document even with this setting, so inspect the lockfile and GitHub SBOM when changing package-manager configuration.
+
+After dependency updates, check the dependency graph or `gh api repos/YoshibaTakumu/everything-jev/dependency-graph/sbom` and confirm the expected packages and versions are present. Remove the workaround only after GitHub correctly indexes the multi-document format.
+
+Sources: [pnpm setting semantics](https://pnpm.io/settings/cli#pmonfail), [pnpm format discussion](https://github.com/pnpm/pnpm/issues/13805), [GitHub parser issue](https://github.com/dependabot/dependabot-core/issues/15904).
+
 ## GitHub Code Quality availability
 
 GitHub Code Quality is a separate product from CodeQL code scanning. GitHub announced general availability on July 20, 2026 at $10 per active committer/month, with additional usage costs. The current documentation lists GitHub Team and Enterprise Cloud. The setup API for this personal public repository returned `Code quality is not available for this repository.` We have not enabled it or purchased a plan.

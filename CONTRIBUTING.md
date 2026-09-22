@@ -2,6 +2,8 @@
 
 Use Node.js 24.x (`.node-version`) and the pnpm version declared in `package.json`.
 
+Install that exact pnpm version with your version manager and check `pnpm --version` before working. `pmOnFail: ignore` keeps the lockfile compatible with GitHub's dependency graph, so pnpm does not switch versions or enforce the pin itself. CI installs the declared version with `pnpm/action-setup` and explicitly checks it. See [the lockfile compatibility note](docs/quality.md#pnpm-lockfile-compatibility) before changing this setting.
+
 ```sh
 pnpm install --frozen-lockfile
 pnpm build
@@ -31,7 +33,7 @@ Use Conventional Commits when merging changes: `fix:` for patches, `feat:` for f
 
 After successful push CI on the current `main` commit, Release Please creates or updates a release PR. Review its version, changelog, and successful `CI / release checks` status before merging it. That status is attached to the exact release PR commit after verification and dependency review pass. Merging the release PR and passing main CI creates the `vX.Y.Z` tag and GitHub Release. This workflow does not publish to npm. The initial manifest continues from v0.1.0.
 
-The repository must enable **Settings → Actions → General → Allow GitHub Actions to create and approve pull requests**. Default workflow permissions can remain read-only; the release job requests the required write permissions. It uses `GITHUB_TOKEN`, so it explicitly dispatches CI on the generated release branch because bot-created PRs do not trigger `pull_request` workflows. No personal access token is required.
+The repository must enable **Settings → Actions → General → Allow GitHub Actions to create and approve pull requests**. Default workflow permissions can remain read-only; the release job requests the required write permissions. It uses `GITHUB_TOKEN`, so it explicitly dispatches CI on the generated release branch. Bot-created PRs also create a separate `pull_request` run that requires maintainer approval; this can show `action_required` even when the dispatched `CI / release checks` passes. After reviewing the generated diff, a maintainer can approve that specific run from the PR's **Approve workflows to run** control. Keep repository-wide execution protections enabled. No personal access token is required. See [GitHub's token event behavior](https://docs.github.com/en/actions/concepts/security/github_token#when-github_token-triggers-workflow-runs).
 
 For recovery, rerun the failed Release Please job or dispatch `release-please.yml` on `main` after checking that main CI passed. If release PR CI needs rerunning, use `gh workflow run ci.yml --ref <release-branch>`. Check Actions logs and the PR's current commit before merging; the workflow does not auto-merge release PRs.
 

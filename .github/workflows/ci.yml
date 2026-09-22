@@ -22,7 +22,22 @@ jobs:
         with:
           node-version-file: .node-version
           cache: pnpm
+      - name: Check the pinned pnpm version
+        run: |
+          expected=$(node -p "require('./package.json').packageManager")
+          actual="pnpm@$(pnpm --version)"
+          if [ "$actual" != "$expected" ]; then
+            echo "Expected $expected, got $actual" >&2
+            exit 1
+          fi
       - run: pnpm install --frozen-lockfile
+      - name: Check dependency graph compatibility
+        run: |
+          if grep -q '^---' pnpm-lock.yaml; then
+            echo 'GitHub dependency scanning requires a single-document lockfile; see docs/quality.md.' >&2
+            exit 1
+          fi
+          git diff --exit-code -- pnpm-lock.yaml
       - run: pnpm verify
       - run: node dist/cli.js demo all > /dev/null
       - run: node examples/harness.mjs

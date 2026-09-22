@@ -1,3 +1,7 @@
+# Keep a single-document lockfile until GitHub's dependency graph supports pnpm 12.
+# pnpm/action-setup and the explicit CI version check enforce packageManager.
+pmOnFail: ignore
+
 minimumReleaseAgeExclude:
   - '@oxlint/binding-android-arm-eabi@1.85.0'
   - '@oxlint/binding-android-arm64@1.85.0'
