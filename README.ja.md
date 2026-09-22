@@ -4,6 +4,8 @@
 
 [English](README.md) · [22 のレシピ](docs/cookbook.md) · [ハーネスへの組み込み](docs/harness.md) · [調査資料](docs/sources.md)
 
+[技術ドキュメント索引](docs/README.md) · [採用技術と管理方法](docs/tech-stack/README.md)
+
 TypeSafe の Jev を使う共通クライアント、回答の検証、判定ポリシー、用途別の実行可能なサンプルをまとめた独立 OSS です。MIT ライセンス、ランタイム依存なし。開発・業務・ドキュメント・メディアの自動化を扱います。
 
 ## まず動かす

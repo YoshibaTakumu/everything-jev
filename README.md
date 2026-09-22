@@ -7,6 +7,8 @@
 
 [日本語](README.ja.md) · [22 recipes](docs/cookbook.md) · [Architecture](docs/architecture.md) · [Harness integration](docs/harness.md) · [Research sources](docs/sources.md)
 
+[Documentation index](docs/README.md) · [Tech stack](docs/tech-stack/README.md)
+
 `everything-jev` is an independent TypeScript toolkit and cookbook for [TypeSafe's Jev](https://docs.typesafe.ai/models). It combines an HTTP client, runtime validation, conservative decision policies, and executable examples across development, business operations, and creative tools. Zero runtime dependencies.
 
 The name describes the breadth of the cookbook. **This release ships decision recipes, not 22 connected service integrations.** Live inference requires a TypeSafe API key. Every bundled demo works offline with explicitly labelled, hand-authored responses. Those demos test application wiring, not Jev accuracy.

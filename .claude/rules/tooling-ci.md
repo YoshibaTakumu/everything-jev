@@ -17,10 +17,12 @@ paths:
   - "CHANGELOG.md"
   - "CONTRIBUTING.md"
   - "docs/quality.md"
+  - "docs/tech-stack/**"
 ---
 
 # Development tooling and CI
 
+- For dependency, runtime or tooling changes, read [the tech stack](../../docs/tech-stack/README.md) and follow [documentation maintenance](../../docs/tech-stack/documentation.md#updating-the-documents) in the same change.
 - Before changing dependencies or pnpm configuration, read the lockfile compatibility section of [quality tooling](../../docs/quality.md). Verify GitHub's dependency graph after dependency updates; a passing Dependency Review alone does not establish that the lockfile was fully indexed.
 - Before changing hooks or commit checks, read the Git hooks section of [CONTRIBUTING.md](../../CONTRIBUTING.md). Keep local checks aligned with CI and invoke repository tools through pnpm.
 - Before changing release automation, read the Releases section of [CONTRIBUTING.md](../../CONTRIBUTING.md). Validate workflow edits with `actionlint` and check release status against the current PR head SHA. Review generated release changes before approving an individual waiting workflow run, retaining repository-wide execution protections.

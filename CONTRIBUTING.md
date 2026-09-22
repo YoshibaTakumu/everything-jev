@@ -48,6 +48,8 @@ For recovery, rerun the failed Release Please job or dispatch `release-please.ym
 
 ## Evidence and reviews
 
+Use the [documentation index](docs/README.md) to find the owner of a contract and the [tech stack](docs/tech-stack/README.md) for adopted technology. Dependency, tooling and integration changes include the corresponding topic update and index review; follow the [documentation maintenance procedure](docs/tech-stack/documentation.md#updating-the-documents), including manual link and publication checks.
+
 See [quality and security tooling](docs/quality.md) for the checks, repository settings, free OSS options, and current Code Quality availability.
 
 Use human-readable commits and PR descriptions that explain the problem, changed behavior and validation. Cite primary sources for platform claims, distinguish observations from proposals, and document limitations. Contributions must not include customer data, private repository content, credentials or copied code with incompatible licensing.
