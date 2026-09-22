@@ -1,6 +1,6 @@
 {
   "name": "everything-jev",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Typed Jev decisions, executable recipes, and integration guides for automation harnesses.",
   "type": "module",
   "license": "MIT",
