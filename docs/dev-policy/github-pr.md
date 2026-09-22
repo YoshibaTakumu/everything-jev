@@ -21,4 +21,6 @@ Immediately before merge, confirm all of the following from GitHub:
 
 Use a repository-supported merge method and bind the operation to the inspected head SHA where the client supports it. Do not bypass protections with administrator overrides or weaken checks to complete a task. If merge is blocked by external approval/access, report the concrete blocker and preserve the reviewed branch.
 
+Before a squash or merge commit, validate its complete proposed message (subject, blank line and body) with `pnpm commitlint --edit <message-file>`. PR checks validate existing branch commits, not the new message generated at merge time. A valid PR title does not establish that its body satisfies commitlint. Wrap prose to the configured line-length limit and pass the validated subject/body explicitly to the merge client; keep temporary message files outside tracked documentation.
+
 After merge, verify the merged state and merge commit, and check the destination branch's CI for that commit. Apply [branch cleanup](branch-policy.md#after-merge) only when safe. A release PR is a separate change governed by [Releases](../../CONTRIBUTING.md#releases); merging an ordinary PR does not authorize merging a release PR or publishing a package.
