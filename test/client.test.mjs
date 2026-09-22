@@ -140,6 +140,7 @@ test("timeout covers waiting for response body", async () => {
 });
 
 test("client requires a key and bounded timeout", () => {
+  assert.throws(() => new JevClient({}), /TYPESAFE_API_KEY is required/);
   assert.throws(() => new JevClient({ apiKey: " " }));
   assert.throws(() => new JevClient({ apiKey: "test", timeoutMs: NaN }));
 });

@@ -25,7 +25,7 @@ export class JevClient {
   readonly #fetch: typeof globalThis.fetch;
 
   constructor(options: ClientOptions) {
-    if (!options.apiKey.trim())
+    if (typeof options.apiKey !== "string" || !options.apiKey.trim())
       throw new JevApiError("TYPESAFE_API_KEY is required for live evaluation");
     this.#apiKey = options.apiKey;
     this.#timeoutMs = options.timeoutMs ?? 15_000;
